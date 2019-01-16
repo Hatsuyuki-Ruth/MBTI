@@ -306,3 +306,4 @@ fabric.properties
 # Output
 labels.pkl
 sents.pkl
+embs.pkl
