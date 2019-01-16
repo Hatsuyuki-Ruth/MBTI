@@ -21,7 +21,7 @@ model.add(keras.layers.Dense(16, activation=tf.nn.softmax))
 model.summary()
 
 model.compile(optimizer=tf.train.AdamOptimizer(),
-              loss='binary_crossentropy',
+              loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
 x_val = embs[:1000]
