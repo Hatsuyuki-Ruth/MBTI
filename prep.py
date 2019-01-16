@@ -12,7 +12,7 @@ num_regex = '\d+'
 labels = []
 sents = []
 
-with open('../../mbti.csv', 'r') as f:
+with open('../mbti.csv', 'r') as f:
     _ = f.readline()
     line = f.readline()
     while line:

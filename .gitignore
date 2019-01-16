@@ -302,3 +302,7 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+# Output
+labels.pkl
+sents.pkl
