@@ -24,11 +24,15 @@ with open('../mbti.csv', 'r') as f:
         sent = re.sub(num_regex, '', sent)
         sent = re.sub(' +', ' ', sent)
         sent = re.sub('^ *', '', sent)
-        sent = re.sub('[|][| ]*[|] *', '|', sent)
+        sent = re.sub('\|+', '|', sent)
         sent = sent.lower()
         labels.append(label)
         sent = sent.split('|')
-        sents.append(sent)
+        new_sent = []
+        for i in sent:
+            if re.search('[a-zA-Z]', i):
+                new_sent.append(i)
+        sents.append(new_sent)
         line = f.readline()
 
 label_id = {label: i for i, label in enumerate(set(labels))}
