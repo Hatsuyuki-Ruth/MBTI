@@ -8,7 +8,7 @@ import tensorflow as tf
 from tensorflow import keras
 
 
-with open('emb.pkl', 'rb') as f:
+with open('embs.pkl', 'rb') as f:
     embs = pkl.load(f)
 
 with open('labels.pkl', 'rb') as f:
@@ -16,6 +16,8 @@ with open('labels.pkl', 'rb') as f:
 
 model = keras.Sequential()
 model.add(keras.layers.Dense(2048, input_shape=(2048,), activation=tf.nn.relu))
+model.add(keras.layers.Dense(2048, activation=tf.nn.relu))
+# model.add(keras.layers.Dense(2048, activation=tf.nn.relu))
 model.add(keras.layers.Dense(16, activation=tf.nn.softmax))
 
 model.summary()
@@ -31,8 +33,8 @@ y_train = labels[1000:]
 
 history = model.fit(x_train,
                     y_train,
-                    epochs=40,
-                    batch_size=512,
+                    epochs=200,
+                    batch_size=64,
                     validation_data=(x_val, y_val),
                     verbose=1)
 
