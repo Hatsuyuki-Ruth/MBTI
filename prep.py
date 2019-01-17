@@ -18,14 +18,16 @@ with open('../mbti.csv', 'r') as f:
     while line:
         label = line[:4]
         sent = line[7:-3]
-        sent = sent.replace('.|||', '. ')
-        sent = sent.replace('|||', '. ')
+        # sent = sent.replace('.|||', '. ')
+        # sent = sent.replace('|||', '. ')
         sent = re.sub(url_regex, '', sent)
         sent = re.sub(num_regex, '', sent)
         sent = re.sub(' +', ' ', sent)
-        sent = re.sub('^ ', '', sent)
+        sent = re.sub('^ *', '', sent)
+        sent = re.sub('[|][| ]*[|] *', '|', sent)
         sent = sent.lower()
         labels.append(label)
+        sent = sent.split('|')
         sents.append(sent)
         line = f.readline()
 

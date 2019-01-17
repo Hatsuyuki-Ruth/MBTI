@@ -15,7 +15,7 @@ with open('labels.pkl', 'rb') as f:
     labels = pkl.load(f)
 
 model = keras.Sequential()
-model.add(keras.layers.Dense(1024, input_shape=(1024,), activation=tf.nn.relu))
+model.add(keras.layers.Dense(2048, input_shape=(2048,), activation=tf.nn.relu))
 model.add(keras.layers.Dense(16, activation=tf.nn.softmax))
 
 model.summary()
